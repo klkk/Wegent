@@ -29,7 +29,7 @@ NC='\033[0m' # No Color
 
 # Default configuration
 DEFAULT_PORT=3000
-DEFAULT_API_URL="http://localhost:8000"
+DEFAULT_API_URL="http://localhost:8008"
 
 PORT=$DEFAULT_PORT
 API_URL=$DEFAULT_API_URL
@@ -50,13 +50,13 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "Options:"
             echo "  --port PORT          Frontend server port (default: 3000)"
-            echo "  --api-url URL        Backend API URL (default: http://localhost:8000)"
+            echo "  --api-url URL        Backend API URL (default: http://localhost:8008)"
             echo "  -h, --help           Show this help message"
             echo ""
             echo "Examples:"
             echo "  $0                                    # Use default configuration"
             echo "  $0 --port 3001                        # Use custom frontend port"
-            echo "  $0 --api-url http://backend:8000      # Use custom backend URL"
+            echo "  $0 --api-url http://backend:8008      # Use custom backend URL"
             echo "  $0 --port 3001 --api-url http://localhost:9000  # Custom port and API"
             exit 0
             ;;
@@ -194,7 +194,7 @@ if [ ! -f ".env.local" ]; then
 # Frontend Environment Variables
 
 # API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:8008
 NEXT_PUBLIC_USE_MOCK_API=false
 
 # Authentication Configuration
