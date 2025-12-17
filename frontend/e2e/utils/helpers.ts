@@ -100,7 +100,7 @@ export function getBaseUrl(): string {
  * Get API URL for tests
  */
 export function getApiUrl(): string {
-  return process.env.E2E_API_URL || 'http://localhost:8000';
+  return process.env.E2E_API_URL || 'http://localhost:8008';
 }
 
 /**
