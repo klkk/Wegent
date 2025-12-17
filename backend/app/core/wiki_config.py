@@ -33,7 +33,7 @@ class WikiSettings(BaseSettings):
     MAX_CONTENT_SIZE: int = 10 * 1024 * 1024  # Maximum content size 10MB
     SUPPORTED_FORMATS: list[str] = ["markdown", "html"]  # Supported formats
     CONTENT_WRITE_BASE_URL: str = (
-        "http://localhost:8000"  # Base server address for internal wiki content writer
+        "http://localhost:8008"  # Base server address for internal wiki content writer
     )
     CONTENT_WRITE_ENDPOINT: str = (
         "/api/internal/wiki/generations/contents"  # Fixed relative path for content writes
