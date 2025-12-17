@@ -126,7 +126,7 @@ uv pip install -e ../shared
 
 # Start backend in background (output to log file)
 echo "Starting backend server (logs: $BACKEND_LOG)..."
-uv run uvicorn app.main:app --host 0.0.0.0 --port 8000 > "$BACKEND_LOG" 2>&1 &
+uv run uvicorn app.main:app --host 0.0.0.0 --port 8008 > "$BACKEND_LOG" 2>&1 &
 BACKEND_PID=$!
 
 # Step 4: Start Frontend
@@ -134,7 +134,7 @@ echo -e "\n${YELLOW}Step 4: Starting Frontend...${NC}"
 cd "$PROJECT_ROOT/frontend"
 
 # Set environment variables for frontend
-export NEXT_PUBLIC_API_URL="http://localhost:8000"
+export NEXT_PUBLIC_API_URL="http://localhost:8008"
 
 # Install dependencies if needed
 if [ ! -d "node_modules" ]; then
@@ -158,7 +158,7 @@ echo -e "\n${YELLOW}Step 5: Waiting for services to be ready...${NC}"
 
 echo "Waiting for backend..."
 for i in {1..60}; do
-    if curl -s http://localhost:8000/api/health > /dev/null 2>&1 || curl -s http://localhost:8000/ > /dev/null 2>&1; then
+    if curl -s http://localhost:8008/api/health > /dev/null 2>&1 || curl -s http://localhost:8008/ > /dev/null 2>&1; then
         echo -e "${GREEN}Backend is ready!${NC}"
         break
     fi
