@@ -94,7 +94,7 @@ jobs:
           INIT_DATA_ENABLED: "true"
         run: |
           source .venv/bin/activate
-          nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 > backend.log 2>&1 &
+          nohup uvicorn app.main:app --host 0.0.0.0 --port 8008 > backend.log 2>&1 &
           echo $! > backend.pid
           sleep 15
 
@@ -120,7 +120,7 @@ jobs:
         run: |
           echo "Testing backend health endpoint..."
           for i in {1..10}; do
-            if curl -f http://localhost:8000/api/docs > /dev/null 2>&1; then
+            if curl -f http://localhost:8008/api/docs > /dev/null 2>&1; then
               echo "Backend is responding!"
               exit 0
             fi
@@ -150,26 +150,26 @@ jobs:
       - name: Build frontend
         working-directory: ./frontend
         env:
-          NEXT_PUBLIC_API_URL: http://localhost:8000
+          NEXT_PUBLIC_API_URL: http://localhost:8008
         run: npm run build
 
       - name: Start frontend server
         working-directory: ./frontend
         env:
-          NEXT_PUBLIC_API_URL: http://localhost:8000
+          NEXT_PUBLIC_API_URL: http://localhost:8008
         run: |
           npm start &
           sleep 5
 
       - name: Wait for services
         run: |
-          npx wait-on http://localhost:3000 http://localhost:8000/api/docs --timeout 60000
+          npx wait-on http://localhost:3000 http://localhost:8008/api/docs --timeout 60000
 
       - name: Run E2E tests
         working-directory: ./frontend
         env:
           E2E_BASE_URL: http://localhost:3000
-          E2E_API_URL: http://localhost:8000
+          E2E_API_URL: http://localhost:8008
           CI: true
         run: npx playwright test --project=chromium --project=api
 
@@ -283,7 +283,7 @@ jobs:
           INIT_DATA_ENABLED: "true"
         run: |
           source .venv/bin/activate
-          nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 > backend.log 2>&1 &
+          nohup uvicorn app.main:app --host 0.0.0.0 --port 8008 > backend.log 2>&1 &
           echo $! > backend.pid
           sleep 15
 
@@ -309,7 +309,7 @@ jobs:
         run: |
           echo "Testing backend health endpoint..."
           for i in {1..10}; do
-            if curl -f http://localhost:8000/api/docs > /dev/null 2>&1; then
+            if curl -f http://localhost:8008/api/docs > /dev/null 2>&1; then
               echo "Backend is responding!"
               exit 0
             fi
@@ -337,12 +337,12 @@ jobs:
         run: npx playwright install
 
       - name: Wait for backend
-        run: npx wait-on http://localhost:8000/api/docs --timeout 60000
+        run: npx wait-on http://localhost:8008/api/docs --timeout 60000
 
       - name: Run API tests
         working-directory: ./frontend
         env:
-          E2E_API_URL: http://localhost:8000
+          E2E_API_URL: http://localhost:8008
           CI: true
         run: npx playwright test --project=api
 
