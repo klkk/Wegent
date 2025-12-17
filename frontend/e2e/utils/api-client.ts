@@ -523,6 +523,6 @@ export function createApiClient(
   baseURL?: string,
   token?: string
 ): ApiClient {
-  const url = baseURL || process.env.E2E_API_URL || 'http://localhost:8000';
+  const url = baseURL || process.env.E2E_API_URL || 'http://localhost:8008';
   return new ApiClient(request, url, token);
 }
