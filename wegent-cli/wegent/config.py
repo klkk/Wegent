@@ -10,7 +10,7 @@ CONFIG_DIR = Path.home() / ".wegent"
 CONFIG_FILE = CONFIG_DIR / "config.yaml"
 
 DEFAULT_CONFIG = {
-    "server": "http://localhost:8000",
+    "server": "http://localhost:8008",
     "namespace": "default",
     "token": None,
 }
