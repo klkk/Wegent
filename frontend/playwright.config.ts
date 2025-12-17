@@ -89,7 +89,7 @@ export default defineConfig({
       testMatch: /api\/.*\.spec\.ts/,
       use: {
         // API tests don't need a browser
-        baseURL: process.env.E2E_API_URL || 'http://localhost:8000',
+        baseURL: process.env.E2E_API_URL || 'http://localhost:8008',
       },
     },
     /* Performance tests */
