@@ -48,7 +48,7 @@ class TestWegentClient:
         }
         mock_request.return_value = mock_response
 
-        client = WegentClient(server="http://test:8000")
+        client = WegentClient(server="http://test:8008")
         result = client.list_resources("ghost", "default")
 
         assert len(result) == 2
@@ -67,7 +67,7 @@ class TestWegentClient:
         }
         mock_request.return_value = mock_response
 
-        client = WegentClient(server="http://test:8000")
+        client = WegentClient(server="http://test:8008")
         result = client.get_resource("ghost", "default", "my-ghost")
 
         assert result["kind"] == "Ghost"
@@ -81,7 +81,7 @@ class TestWegentClient:
         mock_response.json.return_value = {"detail": "Resource not found"}
         mock_request.return_value = mock_response
 
-        client = WegentClient(server="http://test:8000")
+        client = WegentClient(server="http://test:8008")
         with pytest.raises(APIError) as exc_info:
             client.get_resource("ghost", "default", "nonexistent")
 
@@ -94,7 +94,7 @@ class TestWegentClient:
         import requests
         mock_request.side_effect = requests.exceptions.ConnectionError()
 
-        client = WegentClient(server="http://test:8000")
+        client = WegentClient(server="http://test:8008")
         with pytest.raises(APIError) as exc_info:
             client.list_resources("ghost", "default")
 
