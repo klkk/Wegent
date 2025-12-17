@@ -308,7 +308,7 @@ async def _forward_validation_callback(request: CallbackRequest):
     }
 
     # Get backend URL
-    task_api_domain = os.getenv("TASK_API_DOMAIN", "http://localhost:8000")
+    task_api_domain = os.getenv("TASK_API_DOMAIN", "http://localhost:8008")
     update_url = f"{task_api_domain}/api/shells/validation-status/{validation_id}"
 
     try:
