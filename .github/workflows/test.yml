@@ -318,10 +318,10 @@ jobs:
           INIT_DATA_ENABLED: "False"
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          uvicorn app.main:app --host 0.0.0.0 --port 8008 &
           echo "Waiting for backend to start..."
           for i in {1..30}; do
-            if curl -s http://localhost:8000/api/health > /dev/null 2>&1; then
+            if curl -s http://localhost:8008/api/health > /dev/null 2>&1; then
               echo "Backend is ready!"
               break
             fi
@@ -339,7 +339,7 @@ jobs:
       - name: Run wegent integration tests
         working-directory: ./wegent-cli
         env:
-          WEGENT_TEST_SERVER: http://localhost:8000
+          WEGENT_TEST_SERVER: http://localhost:8008
         run: |
           pytest tests/test_integration.py --integration -v
 
