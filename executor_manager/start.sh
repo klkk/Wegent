@@ -31,7 +31,7 @@ NC='\033[0m' # No Color
 DEFAULT_PORT=8001
 DEFAULT_HOST="0.0.0.0"
 DEFAULT_EXECUTOR_IMAGE="ghcr.io/wecode-ai/wegent-executor:1.0.16"
-DEFAULT_TASK_API_DOMAIN="http://localhost:8000"
+DEFAULT_TASK_API_DOMAIN="http://localhost:8008"
 PYTHON_PATH=""
 
 PORT=$DEFAULT_PORT
@@ -69,7 +69,7 @@ while [[ $# -gt 0 ]]; do
             echo "  --port PORT              Executor Manager port (default: 8001)"
             echo "  --host HOST              Executor Manager host (default: 0.0.0.0)"
             echo "  --executor-image IMAGE   Executor Docker image (default: ghcr.io/wecode-ai/wegent-executor:1.0.16)"
-            echo "  --task-api-domain URL    Backend API domain (default: http://localhost:8000)"
+            echo "  --task-api-domain URL    Backend API domain (default: http://localhost:8008)"
             echo "  --python PATH            Python executable path (default: auto-detect)"
             echo "  -h, --help               Show this help message"
             echo ""
@@ -77,7 +77,7 @@ while [[ $# -gt 0 ]]; do
             echo "  $0                                    # Use default configuration"
             echo "  $0 --port 8002                        # Use custom port"
             echo "  $0 --executor-image custom:latest     # Use custom executor image"
-            echo "  $0 --task-api-domain http://backend:8000  # Use custom backend URL"
+            echo "  $0 --task-api-domain http://backend:8008  # Use custom backend URL"
             echo "  $0 --python /usr/local/bin/python3.12 # Use specific Python"
             exit 0
             ;;
