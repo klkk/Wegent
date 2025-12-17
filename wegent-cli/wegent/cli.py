@@ -41,7 +41,7 @@ def cli(ctx: click.Context, server: str, token: str):
 
     \b
     Quick start:
-      wegent config set server http://localhost:8000
+      wegent config set server http://localhost:8008
       wegent get ghosts
       wegent apply -f my-resources.yaml
       wegent describe ghost my-ghost
