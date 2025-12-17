@@ -28,7 +28,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Default configuration
-DEFAULT_PORT=8000
+DEFAULT_PORT=8002
 DEFAULT_HOST="0.0.0.0"
 DEFAULT_DB_HOST="localhost"
 DEFAULT_DB_PORT=3306
@@ -79,7 +79,7 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: $0 [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --port PORT          Backend server port (default: 8000)"
+            echo "  --port PORT          Backend server port (default: 8002)"
             echo "  --host HOST          Backend server host (default: 0.0.0.0)"
             echo "  --db-host HOST       MySQL host (default: localhost)"
             echo "  --db-port PORT       MySQL port (default: 3306)"
