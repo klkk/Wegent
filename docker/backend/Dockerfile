@@ -25,7 +25,7 @@ COPY shared /app/shared
 # Create .env file (if it doesn't exist)
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
-ENV PORT=8000
+ENV PORT=8008
 # Expose port
 EXPOSE ${PORT}
 
