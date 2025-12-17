@@ -4,7 +4,7 @@ These tests require a running Wegent backend service.
 Run with: pytest tests/test_integration.py -v --integration
 
 Environment variables:
-  WEGENT_TEST_SERVER: Backend API URL (default: http://localhost:8000)
+  WEGENT_TEST_SERVER: Backend API URL (default: http://localhost:8008)
   WEGENT_TEST_TOKEN: Auth token for API (optional)
 """
 
@@ -24,7 +24,7 @@ pytestmark = pytest.mark.integration
 @pytest.fixture(scope="module")
 def server_url():
     """Get test server URL."""
-    return os.environ.get("WEGENT_TEST_SERVER", "http://localhost:8000")
+    return os.environ.get("WEGENT_TEST_SERVER", "http://localhost:8008")
 
 
 @pytest.fixture(scope="module")
